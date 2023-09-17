@@ -20,18 +20,29 @@ metadata:
   name: tb-ingress
   namespace: thingsboard
   annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    #nginx.ingress.kubernetes.io/use-regex: "true"
+    #nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    #nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
 spec:
   rules:
-    - http:
+    - host: iot.electrfy.se
+      http:
         paths:
           - path: /api/v1/.*
             pathType: ImplementationSpecific
             backend:
               service:
                 name: tb-http-transport
+                port:
+                  number: 8080
+          - path: /api
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: tb-node
                 port:
                   number: 8080
           - path: /api/.*
@@ -111,4 +122,8 @@ spec:
                 name: tb-web-ui
                 port:
                   number: 8080
+  tls:
+    - secretName: thingsboard-cert
+      hosts:
+        - iot.electrfy.se
 ---
