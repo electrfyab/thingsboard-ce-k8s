@@ -109,17 +109,17 @@ spec:
     - metadata:
         name: data
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "ReadWriteMany" ]
         resources:
           requests:
-            storage: 100Mi
+            storage: 1Gi
     - metadata:
         name: datalog
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "ReadWriteMany" ]
         resources:
           requests:
-            storage: 100Mi
+            storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
@@ -291,26 +291,26 @@ spec:
         name: logs
       spec:
         accessModes:
-          - ReadWriteOnce
+          - ReadWriteMany
         resources:
           requests:
-            storage: 10Gi
+            storage: 100Gi
     - metadata:
         name: app-logs
       spec:
         accessModes:
-          - ReadWriteOnce
+          - ReadWriteMany
         resources:
           requests:
-            storage: 200Mi
+            storage: 1Gi
     - metadata:
         name: config
       spec:
         accessModes:
-          - ReadWriteOnce
+          - ReadWriteMany
         resources:
           requests:
-            storage: 50Mi
+            storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
