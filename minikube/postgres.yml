@@ -23,10 +23,10 @@ metadata:
     app: postgres
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 5Gi
+      storage: 100Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
