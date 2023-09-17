@@ -124,7 +124,7 @@ spec:
         name: logs
       spec:
         accessModes:
-          - ReadWriteOnce
+          - ReadWriteMany
         resources:
           requests:
             storage: 200Mi
@@ -207,7 +207,7 @@ spec:
         name: logs
       spec:
         accessModes:
-          - ReadWriteOnce
+          - ReadWriteMany
         resources:
           requests:
             storage: 200Mi
@@ -282,7 +282,7 @@ spec:
         name: logs
       spec:
         accessModes:
-          - ReadWriteOnce
+          - ReadWriteMany
         resources:
           requests:
             storage: 200Mi
