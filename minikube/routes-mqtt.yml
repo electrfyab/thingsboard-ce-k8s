@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: thingsboard-ingress-mqtt
+  namespace: thingsboard
+spec:
+  entryPoints:
+    - mqtt
+  routes:
+    - match: HostSNI(`*`)
+      services:
+        - name: tb-mqtt-transport
+          namespace: thingsboard
+          port: 1883
+---
