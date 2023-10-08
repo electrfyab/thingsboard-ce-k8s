@@ -31,57 +31,57 @@ spec:
     - host: iot.electrfy.se
       http:
         paths:
-          - path: /api/v1/.*
-            pathType: ImplementationSpecific
+          - path: /api/v1/
+            pathType: Prefix
             backend:
               service:
                 name: tb-http-transport
                 port:
                   number: 8080
           - path: /api
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: tb-node
                 port:
                   number: 8080
-          - path: /api/.*
-            pathType: ImplementationSpecific
+          - path: /swagger
+            pathType: Prefix
             backend:
               service:
                 name: tb-node
                 port:
                   number: 8080
-          - path: /swagger.*
-            pathType: ImplementationSpecific
+          - path: /webjars
+            pathType: Prefix
             backend:
               service:
                 name: tb-node
                 port:
                   number: 8080
-          - path: /webjars.*
-            pathType: ImplementationSpecific
+          - path: /v2/
+            pathType: Prefix
             backend:
               service:
                 name: tb-node
                 port:
                   number: 8080
-          - path: /v2/.*
-            pathType: ImplementationSpecific
+          - path: /v3/
+            pathType: Prefix
             backend:
               service:
                 name: tb-node
                 port:
                   number: 8080
-          - path: /v3/.*
-            pathType: ImplementationSpecific
+          - path: /static/rulenode
+            pathType: Prefix
             backend:
               service:
                 name: tb-node
                 port:
                   number: 8080
-          - path: /static/rulenode/.*
-            pathType: ImplementationSpecific
+          - path: /static/rulenode/
+            pathType: Prefix
             backend:
               service:
                 name: tb-node
@@ -94,29 +94,22 @@ spec:
                 name: tb-node
                 port:
                   number: 8080
-          - path: /oauth2/.*
-            pathType: ImplementationSpecific
+          - path: /oauth2/
+            pathType: Prefix
             backend:
               service:
                 name: tb-node
                 port:
                   number: 8080
-          - path: /login/oauth2/.*
-            pathType: ImplementationSpecific
+          - path: /login/oauth2/
+            pathType: Prefix
             backend:
               service:
                 name: tb-node
                 port:
                   number: 8080
           - path: /
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: tb-web-ui
-                port:
-                  number: 8080
-          - path: /.*
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: tb-web-ui
@@ -127,3 +120,4 @@ spec:
       hosts:
         - iot.electrfy.se
 ---
+
