@@ -18,7 +18,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: tb-route-http-transport
-  namespace: thingsboard
+  namespace: iot
 spec:
   path: /api/v1
   port:
@@ -33,7 +33,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: tb-route-node
-  namespace: thingsboard
+  namespace: iot
 spec:
   path: /static/rulenode
   port:
@@ -48,7 +48,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: tb-route-web-ui
-  namespace: thingsboard
+  namespace: iot
 spec:
   path: /static
   port:
@@ -63,7 +63,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: tb-route-web-ui-index
-  namespace: thingsboard
+  namespace: iot
 spec:
   path: /index.html
   port:
@@ -78,7 +78,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: tb-route-web-ui-root
-  namespace: thingsboard
+  namespace: iot
 spec:
   path:
   port:
@@ -93,7 +93,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: tb-route-node-root
-  namespace: thingsboard
+  namespace: iot
 spec:
   path: /
   port:

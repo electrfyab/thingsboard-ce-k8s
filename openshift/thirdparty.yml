@@ -18,7 +18,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: tb-zookeeper
-  namespace: thingsboard
+  namespace: iot
 data:
   start-node.sh: |
     #!/bin/sh
@@ -34,9 +34,9 @@ data:
     syncLimit=2
     maxClientCnxns=200
     standaloneEnabled=true
-    server.0=zookeeper-0.zookeeper-headless.thingsboard.svc.cluster.local:2888:3888;2181
-    server.1=zookeeper-1.zookeeper-headless.thingsboard.svc.cluster.local:2888:3888;2181
-    server.2=zookeeper-2.zookeeper-headless.thingsboard.svc.cluster.local:2888:3888;2181
+    server.0=zookeeper-0.zookeeper-headless.iot.svc.cluster.local:2888:3888;2181
+    server.1=zookeeper-1.zookeeper-headless.iot.svc.cluster.local:2888:3888;2181
+    server.2=zookeeper-2.zookeeper-headless.iot.svc.cluster.local:2888:3888;2181
   log4j.properties: |+
     zookeeper.root.logger=INFO, CONSOLE
     zookeeper.console.threshold=INFO
@@ -50,7 +50,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: zookeeper
-  namespace: thingsboard
+  namespace: iot
 spec:
   serviceName: "zookeeper-headless"
   replicas: 3
@@ -125,7 +125,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: zookeeper
-  namespace: thingsboard
+  namespace: iot
 spec:
   type: ClusterIP
   ports:
@@ -145,7 +145,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: zookeeper-headless
-  namespace: thingsboard
+  namespace: iot
   labels:
     app: zookeeper
 spec:
@@ -167,7 +167,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: tb-kafka
-  namespace: thingsboard
+  namespace: iot
 data:
   start-node.sh: |
     #!/bin/sh
@@ -201,7 +201,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: tb-kafka
-  namespace: thingsboard
+  namespace: iot
 spec:
   serviceName: "tb-kafka"
   podManagementPolicy: Parallel
@@ -315,7 +315,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tb-kafka
-  namespace: thingsboard
+  namespace: iot
 spec:
   type: ClusterIP
   selector:
@@ -329,7 +329,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tb-redis
-  namespace: thingsboard
+  namespace: iot
 spec:
   selector:
     matchLabels:
@@ -365,7 +365,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tb-redis
-  namespace: thingsboard
+  namespace: iot
 spec:
   type: ClusterIP
   selector:

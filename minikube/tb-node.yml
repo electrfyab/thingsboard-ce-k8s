@@ -21,7 +21,7 @@ metadata:
   namespace: thingsboard
 spec:
   serviceName: tb-node
-  replicas: 1
+  replicas: 2
   podManagementPolicy: "Parallel"
   selector:
     matchLabels:

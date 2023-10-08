@@ -50,6 +50,11 @@ spec:
             claimName: postgres-pv-claim
       containers:
       - name: postgres
+        args:
+          - sleep
+          - "1000"
+        securityContext:
+          runAsUser: 999
         imagePullPolicy: Always
         image: postgres:12
         ports:
@@ -59,7 +64,7 @@ spec:
         - name: POSTGRES_DB
           value: "thingsboard"
         - name: POSTGRES_PASSWORD
-          value: "postgres"
+          value: "kB7Ttf!dL83aQ"
         - name: PGDATA
           value: /var/lib/postgresql/data/pgdata
         volumeMounts:

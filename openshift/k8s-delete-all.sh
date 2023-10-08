@@ -17,8 +17,8 @@
 
 source .env
 
-kubectl -n thingsboard delete svc,sts,deploy,cm,po,ing --all
+kubectl -n iot delete svc,sts,deploy,cm,po,ing --all
 
-kubectl -n thingsboard delete route --all
+kubectl -n iot delete route --all
 
-kubectl -n thingsboard get pvc --no-headers=true | awk '//{print $1}' | xargs kubectl -n thingsboard delete --ignore-not-found=true pvc
+kubectl -n iot get pvc --no-headers=true | awk '//{print $1}' | xargs kubectl -n iot delete --ignore-not-found=true pvc
