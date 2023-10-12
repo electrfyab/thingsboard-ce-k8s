@@ -109,14 +109,14 @@ spec:
     - metadata:
         name: data
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: ["ReadWriteOnce"]
         resources:
           requests:
             storage: 100Mi
     - metadata:
         name: datalog
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: ["ReadWriteOnce"]
         resources:
           requests:
             storage: 100Mi
@@ -374,3 +374,4 @@ spec:
     - name: tb-redis-port
       port: 6379
 ---
+
